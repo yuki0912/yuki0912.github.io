@@ -17,11 +17,13 @@
             line-height: 1.6;
             color: #333;
             background-color: #f7f9fa;
+            transition: background-color 0.3s, color 0.3s; /* 讓切換模式時有流暢的過渡動畫 */
         }
 
         a {
             text-decoration: none;
             color: #2c3e50;
+            transition: color 0.3s;
         }
 
         /* 頂部導覽列 */
@@ -31,6 +33,7 @@
             position: sticky;
             top: 0;
             z-index: 100;
+            transition: background-color 0.3s, border-color 0.3s;
         }
 
         .nav-container {
@@ -80,7 +83,7 @@
             padding: 30px;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            transition: transform 0.2s;
+            transition: transform 0.2s, background-color 0.3s, box-shadow 0.3s;
         }
 
         .post-card:hover {
@@ -105,6 +108,7 @@
         .post-excerpt {
             color: #555;
             margin-bottom: 20px;
+            transition: color 0.3s;
         }
 
         .read-more {
@@ -119,6 +123,7 @@
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
             height: fit-content;
+            transition: background-color 0.3s;
         }
 
         .profile-img {
@@ -144,6 +149,7 @@
             font-size: 0.95rem;
             text-align: center;
             line-height: 1.8;
+            transition: color 0.3s;
         }
 
         /* 頁尾 */
@@ -153,6 +159,56 @@
             background-color: #2c3e50;
             color: #ecf0f1;
             margin-top: 60px;
+            transition: background-color 0.3s;
+        }
+
+        /* ========================================================
+           新增：黑夜模式（Dark Mode）專屬配色
+           ======================================================== */
+        body.dark-mode {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        
+        body.dark-mode header {
+            background-color: #1e1e1e;
+            border-bottom: 1px solid #2d2d2d;
+        }
+        
+        body.dark-mode .logo,
+        body.dark-mode .nav-links a,
+        body.dark-mode .post-title a,
+        body.dark-mode .sidebar h3 {
+            color: #ffffff;
+        }
+
+        body.dark-mode .nav-links a:hover,
+        body.dark-mode .post-title a:hover {
+            color: #35a5ec;
+        }
+        
+        body.dark-mode .post-card, 
+        body.dark-mode .sidebar {
+            background-color: #1e1e1e;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+        
+        body.dark-mode .post-date {
+            color: #888888;
+        }
+        
+        body.dark-mode .post-excerpt,
+        body.dark-mode .sidebar p {
+            color: #b0b0b0;
+        }
+        
+        body.dark-mode .read-more {
+            color: #35a5ec;
+        }
+
+        body.dark-mode footer {
+            background-color: #1a1a1a;
+            border-top: 1px solid #2d2d2d;
         }
 
         /* RWD 手機版優化 */
@@ -172,7 +228,6 @@
 </head>
 <body>
 
-    <!-- 導覽列 -->
     <header>
         <div class="nav-container">
             <a href="#" class="logo">👋 探索日誌</a>
@@ -180,25 +235,22 @@
                 <a href="#">首頁</a>
                 <a href="#">文章分類</a>
                 <a href="#">關於我</a>
+                <button id="theme-toggle" style="background: none; border: none; cursor: pointer; font-size: 1.2rem; margin-left: 15px;">🌙</button>
             </nav>
         </div>
     </header>
 
-    <!-- 主要內容 -->
     <main class="main-container">
         
-        <!-- 左側：文章列表 -->
         <section class="posts-section">
             
-            <!-- 文章 1 -->
             <article class="post-card">
                 <div class="post-date">2026 年 6 月 23 日 • 技術隨筆</div>
-                <h2 class="post-title"><a href="#">我的第一篇部落格文章：網頁設計起步走</a></h2>
+                <h2 class="post-title"><a href="post1.html">我的第一篇部落格文章：網頁設計起步走</a></h2>
                 <p class="post-excerpt">這是我的個人部落格！在這裡我會分享關於程式開發、生活日常以及各種有趣的想法。點擊閱讀更多來看看我是如何用簡單的 HTML 和 CSS 打造這個網站的...</p>
-                <a href="#" class="read-more">閱讀更多 →</a>
+                <a href="post1.html" class="read-more">閱讀更多 →</a>
             </article>
 
-            <!-- 文章 2 -->
             <article class="post-card">
                 <div class="post-date">2026 年 6 月 20 日 • 生活日常</div>
                 <h2 class="post-title"><a href="#">如何在忙碌的生活中保持學習的習慣？</a></h2>
@@ -208,7 +260,6 @@
 
         </section>
 
-        <!-- 右側：側邊欄 -->
         <aside class="sidebar">
             <div class="profile-img">🧑‍💻</div>
             <h3>關於作者</h3>
@@ -217,10 +268,37 @@
 
     </main>
 
-    <!-- 頁尾 -->
     <footer>
         <p>© 2026 我的個人部落格. All rights reserved.</p>
     </footer>
+
+    <script>
+        const toggleBtn = document.getElementById('theme-toggle');
+        
+        // 1. 檢查使用者過去是否有儲存過偏好的模式
+        const savedTheme = localStorage.getItem('blog-theme');
+        
+        // 2. 如果之前存過是深色模式，就幫網頁加上 dark-mode 類別並換成太陽圖示
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+            toggleBtn.textContent = '☀️';
+        }
+
+        // 3. 監聽按鈕的點擊事件
+        toggleBtn.addEventListener('click', () => {
+            // 切換 body 的 dark-mode 類別（有就移除，沒有就加上）
+            document.body.classList.toggle('dark-mode');
+            
+            // 判斷當前模式，更換按鈕圖示並記錄到瀏覽器記憶體（localStorage）中
+            if (document.body.classList.contains('dark-mode')) {
+                toggleBtn.textContent = '☀️';
+                localStorage.setItem('blog-theme', 'dark'); // 記住深色模式
+            } else {
+                toggleBtn.textContent = '🌙';
+                localStorage.setItem('blog-theme', 'light'); // 記住淺色模式
+            }
+        });
+    </script>
 
 </body>
 </html>
