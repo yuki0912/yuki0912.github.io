@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>網頁設計起步走 - 我的個人部落格</title>
+    <style>
+        /* 直接沿用首頁的質感樣式 */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: "Helvetica Neue", Arial, "Noto Sans TC", sans-serif; line-height: 1.8; color: #333; background-color: #f7f9fa; }
+        a { text-decoration: none; color: #3498db; }
+        
+        header { background-color: #ffffff; border-bottom: 1px solid #e1e8ed; }
+        .nav-container { max-width: 800px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 20px; }
+        .logo { font-size: 1.5rem; font-weight: bold; color: #2c3e50; }
+        .nav-links a { margin-left: 20px; font-weight: 500; color: #2c3e50; }
+
+        .article-container { max-width: 800px; margin: 40px auto; padding: 0 20px; }
+        .article-content { background: #ffffff; padding: 40px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        
+        .back-home { display: inline-block; margin-bottom: 20px; color: #7f8c8d; font-size: 0.95rem; }
+        .post-meta { color: #7f8c8d; font-size: 0.9rem; margin-bottom: 10px; }
+        .post-title { font-size: 2.3rem; color: #2c3e50; margin-bottom: 30px; line-height: 1.3; }
+        
+        /* 文章內文樣式 */
+        .post-body h3 { margin: 30px 0 15px; color: #2c3e50; }
+        .post-body p { margin-bottom: 20px; font-size: 1.1rem; text-align: justify; }
+        .post-body blockquote { background: #ecf0f1; border-left: 5px solid #3498db; padding: 15px 20px; margin: 25px 0; font-style: italic; }
+
+        footer { text-align: center; padding: 40px 20px; background-color: #2c3e50; color: #ecf0f1; margin-top: 60px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">👋 探索日誌</a>
+            <nav class="nav-links">
+                <a href="index.html">首頁</a>
+                <a href="#">關於我</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="article-container">
+        <a href="index.html" class="back-home">← 返回首頁</a>
+        
+        <article class="article-content">
+            <div class="post-meta">2026 年 6 月 29 日 • 技術隨筆</div>
+            <h1 class="post-title">我的第一篇部落格文章：網頁設計起步走</h1>
+            
+            <div class="post-body">
+                <p>歡迎來到我的網路小角落！這是我人生中第一次動手寫 HTML 和 CSS 來架設網站。雖然現在有許多現成的平台（如 Medium 或 WordPress），但能夠從零開始，親手敲出每一行程式碼，看著畫面呈現出自己想要的樣子，那種成就感是無可比擬的。</p>
+                
+                <h3>為什麼我想寫部落格？</h3>
+                <p>在這個資訊爆炸的時代，我們每天都在接收海量的訊息，卻很少花時間好好內化。對我來說，寫作是一種梳理思緒的過程。透過文字記錄下自己學到的新技術或是生活感悟，不僅能幫助未來的自己複習，或許也能偶然啟發到網路上某個角落的讀者。</p>
+                
+                <blockquote>
+                    「最好的學習方式，就是把學到的東西教會別人。」—— 這是我一直很喜歡的一句話，也是這個部落格核心的宗旨。
+                </blockquote>
+
+                <h3>接下來的計畫</h3>
+                <p>未來我預計在這個空間分享兩個大方向：一是網頁前端技術的學習筆記，二是我平常生活中的閱讀心得與日常瑣事。如果你對這些主題感興趣，歡迎隨時回來逛逛！</p>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <p>© 2026 我的個人部落格. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
